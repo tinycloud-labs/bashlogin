@@ -6,7 +6,7 @@ A lightweight login banner for Bash that displays system information. It can be 
 
 Default display at login:
 - system information
-- users sessions
+- user sessions
 
 Optional items
 - show systemd service status (by supplying service names as args)
