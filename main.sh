@@ -35,8 +35,6 @@ while [[ $# -gt 0 ]]; do
   esac
 done
 
-SERVICES=("$@")
-
 # ------- Style -------
 # -w is for width, -k is to keep the aspect ratio
 figlet -w 120 -f "$STYLE" -k "$HOSTNAME"
