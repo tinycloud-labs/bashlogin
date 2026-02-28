@@ -6,6 +6,7 @@ BASEDIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
 # source scripts relative to this script's dir
 source "$BASEDIR/src/globals.sh"
 source "$BASEDIR/src/resources.sh"
+source "$BASEDIR/src/service.sh"
 source "$BASEDIR/src/sysinfo.sh"
 source "$BASEDIR/src/sessions.sh"
 
