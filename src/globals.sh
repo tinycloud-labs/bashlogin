@@ -1,10 +1,23 @@
-# 
-# Global variables
-# 
+#
+# Global variables and functions
+#
 # Resources:
 #   - Symbols: https://unicode-table.com/en/sets/arrow-symbols/
 #   - Bash colors: https://misc.flogisoft.com/bash/tip_colors_and_formatting
 #   - Figlet fonts: http://www.figlet.org/fontdb_example.cgi
+
+
+# Print functions
+printHeader() {
+  local header_width=8
+  local title="$1"
+
+  printf "$Dim[%-*s]$ColorReset " "$header_width" "$title"
+}
+
+print() {
+  echo -e -n "$1"
+}
 
 # OS info
 OS=$(lsb_release -si)

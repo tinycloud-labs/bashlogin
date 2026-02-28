@@ -2,7 +2,7 @@
 # Function to display resource usage information: CPU load average, free memory, and disk usage.
 #
 function resourcesInfo() {
-    echo -e -n "$Dim[Res-Info]"
+    # echo -e -n "$Dim[Resource]"
     USED_SPACE=$(df -H / |  awk '{print $5 }' | sed -e /^Use/d | sed 's/%//' | cut -d "." -f 1)
     SPACE_VERBOSE=$(df -H / |  awk '{print $5 " "$3" of "$2}' | sed -e /^Use/d)
     # I want to perform arithmetic comparison, bash doesn't work with floating points, hence the 'cut' command.
