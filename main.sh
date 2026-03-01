@@ -56,7 +56,7 @@ echo ""
 
 # Optional to display systemd svc
 if (( ${#SERVICES[@]} > 0 )); then
-  source src/service.sh
+  source "$BASEDIR/src/service.sh"
   printHeader "Services"
   for svc in "${SERVICES[@]}"; do
     serviceStatus "$svc"
