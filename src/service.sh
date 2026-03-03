@@ -4,7 +4,9 @@
 function serviceStatus () {
 
     local UNIT="$1"
-    [[ "$UNIT" != *.service ]] && UNIT="$UNIT.service"
+
+    # If no unit type suffix is given, assume `.service`
+    [[ "$UNIT" != *.* ]] && UNIT="$UNIT.service"
 
     # Check if unit actually exists
     if ! systemctl cat "$UNIT" >/dev/null 2>&1; then
