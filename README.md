@@ -2,7 +2,9 @@
 
 A lightweight login banner for Bash that displays system information. It can be integrated  with `.bashrc` to display helpful messages in an elegant way for the services you want. Useful on remote servers.
 
-![screenshot](image-1.png)
+![screenshot1](image-1.png)
+
+![screenshot2](image-2.png)
 
 Default display at login:
 - system information
