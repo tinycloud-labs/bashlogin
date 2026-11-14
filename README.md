@@ -39,6 +39,37 @@ Reload your shell:
 source ~/.bashrc
 ```
 
+### Ansible tasks
+
+```yaml
+- name: Clone bashlogin repo
+  ansible.builtin.git:
+    repo: "https://github.com/tinycloud-labs/bashlogin.git"
+    dest: "{{ default_user_home }}/.config/bashlogin"
+    version: "main"
+    update: true
+    force: true
+  ignore_errors: true
+  register: common_bashlogin_clone
+
+- name: Make main.sh executable
+  ansible.builtin.file:
+    path: "{{ default_user_home }}/.config/bashlogin/main.sh"
+    mode: '0755'
+  when: common_bashlogin_clone is succeeded or common_bashlogin_clone is skipped
+
+- name: Add login info message
+  # assuming you declared a variabe `common_bashlogin_args: "foo bar"` somewhere in common/*.yml
+  ansible.builtin.blockinfile:
+    block: |
+      BASHLOGIN_ARGS={{ common_bashlogin_args | quote }}
+      source "$HOME/.config/bashlogin/main.sh"
+    path: "{{ default_user_home }}/.bashrc"
+    marker: "## {mark} ANSIBLE MANAGED BLOCK ##"
+  no_log: true
+  when: common_bashlogin_clone is succeeded or common_bashlogin_clone is skipped
+```
+
 ### Optional configuration
 You can change the Figlet style and provide systemd service unit names to print.
 
